@@ -1,0 +1,42 @@
+{% extends 'template.html' %}
+
+{% block header %}
+  <script src="{{ url_for('static', filename = 'js/tinymce/tinymce.js') }}"></script>
+{% endblock %}
+
+{% block content %}
+  <div class="container">
+    <div class="row">
+      <form class="col-lg-8 col-md-10 mx-auto" action="/post/create" method="POST" enctype="multipart/form-data">
+        <div class="form-group">
+          <label for="PostTitle">Title</label>
+          <input name="postTitle" type="text" id="PostTitle" class="form-control" placeholder="Post Title">
+        </div>
+        <div class="form-group">
+          <label for="PostSubTitle">Sub Title</label>
+          <input name="postSubTitle" type="text" id="PostSubTitle" class="form-control" placeholder="Sub title">
+        </div>
+        <div class="form-group">
+          <label for="PostBody">Content</label>
+          <textarea id="PostBody" name="postBody"></textarea>
+        </div>
+        <div class="form-group">
+          <label for="PostImage">Post Image</label>
+          <input type="file" id="PostImage" name="postImage" class="form-control" placeholder="Upload image">
+        </div>
+        <div class="form-group">
+          <input type="submit" value="submit" class="btn btn-primary" />
+        </div>
+      </form>
+    </div>
+  </div>
+{% endblock %}
+
+{% block script %}
+  <script type="text/javascript">
+    tinymce.init({
+      selector: '#PostBody',
+      toolbar: 'undo redo | styleselect | bold italic | alignleft aligncenter alignright alignjustify | bullist numlist outdent indent',
+    });
+  </script>
+{% endblock %}
