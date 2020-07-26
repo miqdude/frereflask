@@ -1,13 +1,14 @@
 from flask import Flask, flash, render_template, request, redirect, jsonify, url_for
 from flask_sqlalchemy import SQLAlchemy
-from views import home, post, about, contact
-from models.base import db
+from FrereFlask.views import home, post, about, contact
+from FrereFlask.models import db
 
 
-if __name__ == '__main__':
+def create_app(test_config=None):
   app = Flask(__name__)
   
-  app.config.from_pyfile('config.py')
+  if test_config is None:
+    app.config.from_pyfile('config.py')
   
   app.register_blueprint(home)
   app.register_blueprint(post)
@@ -16,4 +17,4 @@ if __name__ == '__main__':
   
   db.init_app(app)
   
-  app.run(debug=True)
+  return app

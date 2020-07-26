@@ -1,5 +1,5 @@
 from flask import Blueprint, render_template
-from models import Post
+from FrereFlask.models.post import Post
 
 home = Blueprint('home', __name__)
 

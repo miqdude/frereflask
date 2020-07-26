@@ -1,7 +1,7 @@
 from flask import Blueprint, render_template, request, redirect, flash, url_for
 from werkzeug.utils import secure_filename
 import os
-from models import Post
+from FrereFlask.models.post import Post
 
 post = Blueprint('post', __name__)
 

@@ -1,4 +1,4 @@
-from .base import db, sa, datetime
+from . import db, sa, datetime
 
 class Post(db.Model):
   id = sa.Column(sa.BigInteger, primary_key = True)
